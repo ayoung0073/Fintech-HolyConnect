@@ -1,0 +1,100 @@
+.bg {
+    width: 1920px;
+    height: 40px;
+    flex-grow: 0;
+    padding: 13px 1367px 13px 20px;
+    background-color: #ffffff;
+}
+
+.title {
+    width: 533px;
+    height: 45.5px;
+    margin: 600px 0 7.5px;
+    font-family: RedHatText;
+    font-size: 36px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #01996d;
+}
+
+.mainBody {
+    width: 1920px;
+    /* height: 895px; */
+    flex-grow: 0;
+    /* margin: 85.6px 0 0; */
+    background-image: linear-gradient(to top, #ffffff, rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+.mainContent{
+    width: 429px;
+    height: 148px;
+    flex-grow: 0;
+    margin: 0px 5px 30px 0;
+    padding-top:100px;
+    font-family: Georgia;
+    font-size: 65px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #01996d;
+  }
+
+.subContent {
+    width: 420px;
+    height: 123px;
+    flex-grow: 0;
+    margin: 30px 0 0 14px;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.57;
+    letter-spacing: normal;
+    text-align: left;
+    color: #484848;
+}
+
+
+.btn-first {
+    width: 137px;
+    height: 65px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    margin: 20px 5px 0 14px;
+    padding: 20px 50px;
+    border-radius: 4px;
+    border: solid 1px #01996d;
+    background-color: #5633e2;
+    color: #ffffff;
+    float:left;
+}
+
+.btn-second {
+    width: 156px;
+    height: 65px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    margin: 20px 358px 0px 5px;
+    padding: 20px 50px;
+    border-radius: 4px;
+    color: #ffffff;
+    border: solid 1px #856de7;
+    background-color: #01996d;
+    float:left;
+}
