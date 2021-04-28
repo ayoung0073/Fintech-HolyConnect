@@ -17,9 +17,9 @@ const bodyParser = require('body-parser')
 // Database Connect
 var connection = mysql.createConnection({
     host     : 'localhost',
-    user     : 'testuser',
-    password : 'mysqlwjdfl',
-    database : 'testdb'
+    user     : 'fintech',
+    password : '123412341234',
+    database : 'test'
 });
 connection.connect();
 
@@ -39,8 +39,6 @@ app.post('/api/signup', function(req, res){
     var accessToken = req.body.accessToken;
     var refreshToken = req.body.refreshToken;
     var userSeqNum = req.body.userSeqNum;
-    // console.log(name, accessToken, userSeqNum);
-
 
     var sql = "INSERT INTO user (name, email, password, accesstoken, refreshtoken, userseqnum) VALUES (?,?,?,?,?,?)"
     connection.query(
@@ -105,24 +103,8 @@ app.post('/api/signin', (req, res) => { // 로그인
                     res.json(2)
                 }
             }
-            // 3. 토큰 생성 후, 클라이언트에게 넘겨주기
-            
         }
     })
-
-    // 비밀번호 비교하는 코드입니다 참고해주세용 
-    // bcrypt.compare(plainPassword, this.password, function(err, isMatch){
-    //     if(err) 
-    //     return cb(null, isMatch)
-    // })
-
-    // 토큰 생성하는 코드
-    // // json webtoken을 이용해 토큰 생성
-    // var user = this;
-    // var token = jwt.sign(user._id.toHexString(), 'secretToken')
-
-    // user.token = token
-
 });
 
 // 사용자정보조회 API
