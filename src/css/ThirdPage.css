@@ -1,0 +1,131 @@
+
+.screen{
+    width: 1200px;
+    height: 500px;
+    flex-grow: 0;
+    padding: 121px 376px 100px 700px;
+    background-color: #ffffff;
+} 
+
+
+
+.userNameText{
+  height: 46px;
+  margin: 0px 48px 8px 0px;
+  font-family: Lato;
+  font-size: 30px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.transferMessage{
+  height: 71px;
+  margin: 118px 0px 0px 0px;
+  font-family: Lato;
+  font-size: 30px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.withdrawerAccontText{
+  width: 92px;
+  height: 33px;
+  margin: 200px 60px 28px 0px;
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.withdrawerInput{
+  margin-bottom: 10px;
+}
+
+.recentTransferRecordName{
+  height: 24px;
+  margin: 0 123px 257px 0;
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.TransferRecordBtn{
+    width: 100px;
+    height: 30px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    margin: 20px 5px 0 14px;
+    padding: 8px;
+    border-radius: 4px;
+    border: solid 1px #5633e2;
+    background-color: #5633e2;
+    color: #ffffff;
+    float:left;
+}
+
+.checkBtn{
+    width: 70px;
+    height: 30px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    margin: 20px 5px 0 14px;
+    padding-left: 20px;
+    border-radius: 4px;
+    border: solid 1px #01996d;
+    background-color: #01996d;
+    color: #ffffff;
+    float:left;
+}
+
+
+
+.withdrawerAccount{
+  width: 247px;
+  height: 0px;
+  /* margin: 96px 60px 38px 204px; */
+    border: solid 2px #000000;
+    background-color: #ffffff;
+}
+
+.recentTransferRecord {
+  
+  background-color: #000000;
+}
+
+.Trans{
+  display: block;
+  text-align: left;
+  margin: auto;
+  float: left;
+  padding: 230px 0px 0px 150px;
+  width: 35%;
+}
