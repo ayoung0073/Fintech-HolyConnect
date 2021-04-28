@@ -108,6 +108,46 @@ app.post('/api/signin', (req, res) => { // 로그인
 
 });
 
+app.get('/api/info', (req, res) => {
+    // var userId = req.decoded.userId;
+    var userId = 2;
+    var sql = "SELECT * FROM user WHERE id = ?"
+    connection.query(sql,[userId], function(err , result){
+        if(err){
+            console.log("사용자 정보 조회 에러");
+            console.error(err);
+            throw err
+        }
+        else {
+            console.log(result);
+            var option = {
+                method : "GET",
+                url : "https://testapi.openbanking.or.kr/v2.0/user/me",
+                headers : {
+                    Authorization : 'Bearer ' + result[0].accesstoken
+                },
+                qs : {
+                    user_seq_no : result[0].userseqnum
+                }
+            }
+            request(option, function(err, response, body){
+                console.log(body);
+                
+                if(err){
+                    console.error(err);
+                    throw err;
+                }
+                else {
+                    var accessRequestResult = JSON.parse(body);
+                    console.log(accessRequestResult);
+                    res.json(accessRequestResult)
+                }
+            })
+        }
+    })
+})
+
+
 // 거래내역조회 API
 app.post('/api/history', (req, res) => {
     var userId = 2;
