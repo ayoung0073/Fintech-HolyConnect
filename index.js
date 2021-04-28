@@ -16,9 +16,9 @@ const bodyParser = require('body-parser')
 // Database Connect
 var connection = mysql.createConnection({
     host     : 'localhost',
-    user     : 'fintech',
-    password : '123412341234',
-    database : 'test'
+    user     : 'testuser',
+    password : 'mysqlwjdfl',
+    database : 'testdb'
 });
 connection.connect();
 
@@ -40,12 +40,6 @@ app.post('/api/signup', function(req, res){
     var userSeqNum = req.body.userSeqNum;
     // console.log(name, accessToken, userSeqNum);
 
-    bcrypt.genSalt(saltRounds, function(err, salt){
-    bcrypt.hash(password, salt, function(err, hash){
-        if(err) return next(err)
-            password = hash // 해시된 비밀번호로 설정
-        });
-    })
 
     var sql = "INSERT INTO user (name, email, password, accesstoken, refreshtoken, userseqnum) VALUES (?,?,?,?,?,?)"
     connection.query(
@@ -72,7 +66,7 @@ app.post('/api/signup', function(req, res){
 })
 
 app.post('/api/signin', (req, res) => { // 로그인
-    var email = req.body.email;
+    var email = req.body.email;  
     var plainPassword = req.body.password;
     const sql = "SELECT * FROM user WHERE email = ?";
     connection.query(sql, [email], function(err, result){
@@ -83,9 +77,33 @@ app.post('/api/signin', (req, res) => { // 로그인
         }
         else {
             // 1. User 있는지 체크
-
+            if(result.length == 0) {
+                res.json(0);
+            }
             // 2. Password 비교
-
+            else {
+                var dbPassword = result[0].password;
+                if(dbPassword == plainPassword){
+                    //login
+                    jwt.sign({
+                        data: {
+                            userId : result[0].id
+                            }   
+                        }, 
+                        'secret', 
+                        { expiresIn: '1h' },
+                        function(err, token){
+                            var data = {
+                                success: true,
+                                token: token
+                            }
+                          res.json(data);
+                    });
+                }
+                else {
+                    res.json(2)
+                }
+            }
             // 3. 토큰 생성 후, 클라이언트에게 넘겨주기
             
         }
@@ -98,7 +116,7 @@ app.post('/api/signin', (req, res) => { // 로그인
     // })
 
     // 토큰 생성하는 코드
-    // // jsonwebtoken을 이용해 토큰 생성
+    // // json webtoken을 이용해 토큰 생성
     // var user = this;
     // var token = jwt.sign(user._id.toHexString(), 'secretToken')
     // // user._id + 'secretToken' = token
