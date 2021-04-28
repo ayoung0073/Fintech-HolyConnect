@@ -1,10 +1,17 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import checkImage from '../images/checkImage.PNG';
 import TransferImage from '../images/TransferImage.PNG';
+import axios from 'axios';
 import '../css/ThirdPage.css'
 import {Link} from 'react-router-dom'
 
 function ThirdPage() {
+    useEffect(() => {
+        axios.get('') /* 사이트URL/Third 로 받아오면 됨*/
+            .then(response => {
+                console.log(response)
+            });
+    }, []);  
     return (
         <div>
           <img src={TransferImage}alt="Trans" class="Trans"/>
