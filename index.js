@@ -102,12 +102,12 @@ app.post('/api/signin', (req, res) => { // 로그인
     // // jsonwebtoken을 이용해 토큰 생성
     // var user = this;
     // var token = jwt.sign(user._id.toHexString(), 'secretToken')
-    // // user._id + 'secretToken' = token
 
     // user.token = token
 
 });
 
+// 사용자정보조회 API
 app.get('/api/info', (req, res) => {
     // var userId = req.decoded.userId;
     var userId = 2;
@@ -141,6 +141,63 @@ app.get('/api/info', (req, res) => {
                     var accessRequestResult = JSON.parse(body);
                     console.log(accessRequestResult);
                     res.json(accessRequestResult)
+                }
+            })
+        }
+    })
+})
+
+// 출금이체 API
+app.post('/withdraw', function (req, res) {
+    // var userId = req.decoded.userId;
+    var userId = 2;
+    var fin_use_num = req.body.fin_use_num;
+
+    var countnum = Math.floor(Math.random() * 1000000000) + 1;
+    var transId = "M202112119U" + countnum; // 이용기관번호
+    var sql = "SELECT * FROM user WHERE id = ?"
+    connection.query(sql,[userId], function(err , result){
+        if(err){
+            console.error(err);
+            throw err
+        }
+        else {
+            console.log(result);
+            var option = {
+                method : "POST",
+                url : "https://testapi.openbanking.or.kr/v2.0/transfer/withdraw/fin_num",
+                headers : {
+                    Authorization : 'Bearer ' + result[0].accesstoken,
+                    "Content-Type" : "application/json"
+                },
+                json : {
+                    "bank_tran_id": transId,
+                    "cntr_account_type": "N",
+                    "cntr_account_num": "100000000003",
+                    "dps_print_content": "헌금",
+                    "fintech_use_num": fin_use_num,
+                    "wd_print_content": "헌금",
+                    "tran_amt": "100000",
+                    "tran_dtime": "20200424131111",
+                    "req_client_name": "문아영",
+                    "req_client_fintech_use_num" : "199159919057870971744807",
+                    "req_client_num": "HONGGILDONG1234",
+                    "transfer_purpose": "TR",
+                    "recv_client_name": "신성교회",
+                    "recv_client_bank_code": "097",
+                    "recv_client_account_num": "100000000003"
+                }
+            }
+            request(option, function(err, response, body){
+                if(err){
+                    console.error(err);
+                    throw err;
+                }
+                else {
+                    console.log(body);
+                    if(body.rsp_code == 'A0000'){
+                        res.json(1)
+                    }
                 }
             })
         }
