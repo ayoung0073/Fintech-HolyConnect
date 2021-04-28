@@ -5,8 +5,7 @@ const request = require('request');
 
 var jwt = require('jsonwebtoken');
 var mysql = require('mysql');
-const bcrypt = require('bcrypt')
-const saltRounds = 10
+var auth = require('./lib/auth');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
@@ -83,14 +82,13 @@ app.post('/api/signin', (req, res) => { // 로그인
             else {
                 var dbPassword = result[0].password;
                 if(dbPassword == plainPassword){
-                    //login
                     jwt.sign({
                         data: {
                             userId : result[0].id
                             }   
                         }, 
                         'secret', 
-                        { expiresIn: '1h' },
+                        { expiresIn: '8h' },
                         function(err, token){
                             var data = {
                                 success: true,
@@ -108,9 +106,8 @@ app.post('/api/signin', (req, res) => { // 로그인
 });
 
 // 사용자정보조회 API
-app.get('/api/info', (req, res) => {
-    // var userId = req.decoded.userId;
-    var userId = 2;
+app.get('/api/info', auth, (req, res) => {
+    var userId = req.decoded.data.userId;
     var sql = "SELECT * FROM user WHERE id = ?"
     connection.query(sql,[userId], function(err , result){
         if(err){
@@ -148,9 +145,8 @@ app.get('/api/info', (req, res) => {
 })
 
 // 출금이체 API
-app.post('/withdraw', function (req, res) {
-    // var userId = req.decoded.userId;
-    var userId = 2;
+app.post('/withdraw', auth, function (req, res) {
+    var userId = req.decoded.data.userId;
     var fin_use_num = req.body.fin_use_num;
 
     var countnum = Math.floor(Math.random() * 1000000000) + 1;
@@ -206,8 +202,8 @@ app.post('/withdraw', function (req, res) {
 
 
 // 거래내역조회 API
-app.post('/api/history', (req, res) => {
-    var userId = 2;
+app.post('/api/history', auth, (req, res) => {
+    var userId = req.decoded.data.userId;
     var sql = "SELECT * FROM user WHERE id = ?"
     connection.query(sql,[userId], function(err , result){
         if(err){
