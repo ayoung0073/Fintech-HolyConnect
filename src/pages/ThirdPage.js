@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import checkImage from '../images/checkImage.PNG';
 import TransferImage from '../images/TransferImage.PNG';
 import axios from 'axios';
@@ -9,20 +9,18 @@ import {Link} from 'react-router-dom'
 // })
 function ThirdPage() {
     useEffect(() => {
-        axios.get('http://127.0.0.1:5000/api/info', {
-            headers: {"Authorization" : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY1ODMxMSwiZXhwIjoxNjE5Njg3MTExfQ.eouMk7rkaiW57sYE-ZupbBzIkbdImLdXB09VsI2UzNY'}
-        }) /* 사이트URL/Third 로 받아오면 됨*/
+        axios.get('') /* ''안에는 사이트URL받아오면 됨*/
             .then(response => {
                 console.log(response)
             });
     }, []);  
     return (
         <div>
-          <img src={TransferImage}alt="Trans" class="Trans"/>
+          <img src={TransferImage}alt="TransferImage" class="TransferImage"/>
             <div className="screen">
                 <img src = {checkImage}
                   width = '100px'
-                  height='100px' />
+                  height='100px' alt="checkImage"/>
                 <div>
                 <input className="userName" type="userName"/>
                 <div className="userNameText">님에게</div>
