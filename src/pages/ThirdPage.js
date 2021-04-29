@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import checkImage from '../images/checkImage.PNG';
 import TransferImage from '../images/TransferImage.PNG';
 import axios from 'axios';
@@ -18,7 +18,7 @@ function ThirdPage() {
             <div className="screen">
                 <img src = {checkImage}
                   width = '100px'
-                  height='100px' />
+                  height='100px' alt="checkImage"/>
                 <div>
                 <input className="userName" type="userName"/>
                 <div className="userNameText">님에게</div>
