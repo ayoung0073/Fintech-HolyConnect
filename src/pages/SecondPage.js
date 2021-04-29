@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import '../css/SecondPage.css'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
-
-function SecondPage() {
+function SecondPage(props) {
     const [User, setUser] = useState([]);
+    const [Anonymous, setAnonymous] = useState('false');
+    const [Price, setPrice] = useState('');
 
-    const [Account, setAccount] = useState('');
     useEffect(() => {
         axios.get('http://192.168.0.21:5000/api/info', {
-            headers: {"Authorization" : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY1ODMxMSwiZXhwIjoxNjE5Njg3MTExfQ.eouMk7rkaiW57sYE-ZupbBzIkbdImLdXB09VsI2UzNY'}
+            headers: {"token" : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY1ODMxMSwiZXhwIjoxNjE5Njg3MTExfQ.eouMk7rkaiW57sYE-ZupbBzIkbdImLdXB09VsI2UzNY'}
         }) 
             .then(response => {
                 if (response.data.success){
@@ -18,7 +17,46 @@ function SecondPage() {
                     setUser(response.data.data);
                 }
             })
-    }, []);  
+    }, []);
+    
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+        let fin = document.getElementById('fin');
+        // console.log(fin.options[fin.selectedIndex].value);
+        let body = {
+            price: Price,
+            anonymous: Anonymous,
+            fin_use_num: fin.options[fin.selectedIndex].value
+        }
+        console.log(body)
+        
+            let option = {
+                url : 'http://192.168.0.21:5000/api/withdraw',
+                headers : {
+                    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY1ODMxMSwiZXhwIjoxNjE5Njg3MTExfQ.eouMk7rkaiW57sYE-ZupbBzIkbdImLdXB09VsI2UzNY"
+                },
+                method : 'POST',
+                data: body
+            }
+            axios(option)
+            .then(response => {
+                if (response.data.success){
+                    console.log(response.data.data)
+                    props.history.push("/third")
+                }
+        })
+    }
+
+    const onPriceHandler = (event) => {
+        setPrice(event.currentTarget.value)
+    }
+
+
+    const changeRadio = (e) => {
+        setAnonymous(e.target.value);
+    };
+
+
     return(
         <div className="BG">
             <div className="LeftSpace">
@@ -31,23 +69,40 @@ function SecondPage() {
             </div>
 
             <div className="RightSpace">
-
+            <form onSubmit={onSubmitHandler}>
                 <div>
-                    <label className="named">기명</label>
-                    <input type="checkbox" className="nameBt1"/>
-                    <label className="named">무기명</label>
-                    <input type="checkbox" className="nameBt2"/>
+                <label>
+                <input
+                    type="radio"
+                    name="anonymous"
+                    value="false"
+                    checked={Anonymous === "false" ? true : false}
+                    onChange={changeRadio}
+                ></input>
+                기명
+                </label>
+                <label>
+                <input
+                    type="radio"
+                    name="anonymous"
+                    value="true"
+                    checked={Anonymous === "true" ? true : false}
+                    onChange={changeRadio}
+                ></input>
+                무기명
+                </label>
                 </div>
                 <label className="SendMoney">보낼금액</label>
-                <input type="text" className="Rectangle-2"/>
+                <input type="text" className="Rectangle-2" name="price" value={Price} onChange={onPriceHandler}/>
                 <div>
                 <label className="Account">
                     출금계좌
                 </label>
-                <select>
+
+                <select id="fin">
                     {User.length != 0 &&                
                         User.res_list.map((element) => {
-                           return <option value={element.fintech_use_num} selected>{element.account_alias}</option>
+                           return <option value={element.fintech_use_num} selected>{element.bank_name}</option>
                         })
                     }
                 </select>
@@ -56,12 +111,10 @@ function SecondPage() {
                 }   
 
                 </div>
-                <Link to="/third">
-                    <input className="submit" type="submit"></input>
-                </Link>
+                <button>헌금하기</button>
+                </form>
             </div>
         </div>
-    
     )
 }
 

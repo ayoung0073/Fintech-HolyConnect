@@ -72,6 +72,9 @@
   height: 20px;
 }
 
+label {
+  color: #ffffff;
+}
 
 .Rectangle-2 {
   width: 150px;
