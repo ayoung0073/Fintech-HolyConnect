@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import '../css/SecondPage.css'
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'ajax';
 
 function SecondPage(props) {
     const [User, setUser] = useState([]);
@@ -8,13 +10,13 @@ function SecondPage(props) {
     const [Price, setPrice] = useState('');
 
     useEffect(() => {
-        axios.get('http://192.168.0.21:5000/api/info', {
-            headers: {"token" : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY1ODMxMSwiZXhwIjoxNjE5Njg3MTExfQ.eouMk7rkaiW57sYE-ZupbBzIkbdImLdXB09VsI2UzNY'}
+        axios.get('http://127.0.0.1:5000/api/info', {
+            headers: {"token" : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY4Nzc4NiwiZXhwIjoxNjE5NzE2NTg2fQ.OerDKIgvYtxcHt8GaQzd0MYKGANzX0Wqpu3leiTxn0Y'}
         }) 
             .then(response => {
                 if (response.data.success){
                     console.log(response.data.data)
-                    setUser(response.data.data);
+                    setUser(response.data.data.res_list);
                 }
             })
     }, []);
@@ -24,16 +26,16 @@ function SecondPage(props) {
         let fin = document.getElementById('fin');
         // console.log(fin.options[fin.selectedIndex].value);
         let body = {
-            price: Price,
+            price: Price.replaceAll(',',''),
             anonymous: Anonymous,
             fin_use_num: fin.options[fin.selectedIndex].value
         }
         console.log(body)
         
             let option = {
-                url : 'http://192.168.0.21:5000/api/withdraw',
+                url : 'http://127.0.0.1:5000/api/withdraw',
                 headers : {
-                    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY1ODMxMSwiZXhwIjoxNjE5Njg3MTExfQ.eouMk7rkaiW57sYE-ZupbBzIkbdImLdXB09VsI2UzNY"
+                    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY4Nzc4NiwiZXhwIjoxNjE5NzE2NTg2fQ.OerDKIgvYtxcHt8GaQzd0MYKGANzX0Wqpu3leiTxn0Y"
                 },
                 method : 'POST',
                 data: body
@@ -47,16 +49,48 @@ function SecondPage(props) {
         })
     }
 
-    const onPriceHandler = (event) => {
-        setPrice(event.currentTarget.value)
-    }
+    // const onPriceHandler = (event) => {
+    //     setPrice(event.currentTarget.value)
+    // }
 
 
     const changeRadio = (e) => {
         setAnonymous(e.target.value);
     };
 
+    const onPriceHandler = (event) => {
+        var input = document.getElementById('price');
+        console.log(input);
+        var value = input.value;
 
+      
+        // 원단위로 변경하기
+        var result = AddComma(value);
+        setPrice(result)
+      
+        //   _$self.val(result);
+    
+      function AddComma(dataValue) {
+        console.log(dataValue);
+        dataValue = dataValue.replaceAll(',','');
+        isNumber(dataValue);
+        var separateValue = Number(dataValue).toLocaleString('en');
+        console.log(separateValue);
+        if (separateValue == 'NaN') {
+          return '';
+        }
+        return separateValue;
+      }
+      
+      function isNumber(checkValue) {
+          checkValue = '' + checkValue;
+          if (isNaN(checkValue) || checkValue == "") {
+            alert('숫자만 입력해 주세요.');
+            return;
+          }
+      }
+    }
+      
     return(
         <div className="BG">
             <div className="LeftSpace">
@@ -70,50 +104,64 @@ function SecondPage(props) {
 
             <div className="RightSpace">
             <form onSubmit={onSubmitHandler}>
+                
                 <div>
-                <label>
-                <input
-                    type="radio"
-                    name="anonymous"
-                    value="false"
-                    checked={Anonymous === "false" ? true : false}
-                    onChange={changeRadio}
-                ></input>
-                기명
+                <div class="form-check-inline">
+                <label class="form-check-label" className="form">
+                    <input 
+                        type="radio" 
+                        class="form-check-input" 
+                        name="anonymous"
+                        value="false"
+                        checked={Anonymous === "false" ? true : false}
+                        onChange={changeRadio}
+                        />
+                        기명
                 </label>
-                <label>
-                <input
-                    type="radio"
-                    name="anonymous"
-                    value="true"
-                    checked={Anonymous === "true" ? true : false}
-                    onChange={changeRadio}
-                ></input>
-                무기명
+                <br/>
+                &nbsp;&nbsp;&nbsp;
+                <label class="form-check-label" className="form"> 
+                    <input 
+                        type="radio" 
+                        class="form-check-input" 
+                        name="anonymous"
+                        value="true"
+                        checked={Anonymous === "true" ? true : false}
+                        onChange={changeRadio}
+                        />
+                        무기명
                 </label>
+                <br/><br/><br/>
                 </div>
-                <label className="SendMoney">보낼금액</label>
-                <input type="text" className="Rectangle-2" name="price" value={Price} onChange={onPriceHandler}/>
-                <div>
-                <label className="Account">
-                    출금계좌
+                </div>
+                <label class="form-check-label" className="form">보낼금액 
+                &nbsp;&nbsp;<input type="text" class="form-inline-input" id="price" name="price" value={Price} onChange={onPriceHandler}/> &nbsp;원
                 </label>
-
-                <select id="fin">
+                <br/><br/>
+                <div>
+                <label class="form-check-label" className="form">
+                    출금계좌&nbsp;&nbsp;&nbsp;
+                <select id="fin" className="selectbox">
                     {User.length != 0 &&                
-                        User.res_list.map((element) => {
+                        User.map((element) => {
                            return <option value={element.fintech_use_num} selected>{element.bank_name}</option>
                         })
                     }
                 </select>
+                &nbsp;&nbsp;
                 {User.length != 0 &&   
-                    <input type="text" value={User.res_list[0].account_num_masked} className="AccountNumber"></input>
+                    <input class="form-inline-input" type="text" value={User[0].account_num_masked} readOnly/>
                 }   
+                </label>
 
                 </div>
-                <button>헌금하기</button>
+                <br/><br/>
+                <button className="form-button" class="btn btn-light">헌금하기</button>
                 </form>
             </div>
+            <script>
+                
+            </script>
         </div>
     )
 }

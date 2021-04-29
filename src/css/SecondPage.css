@@ -7,32 +7,33 @@
 
 
 .Value- {
-  width: 715px;
+  /* width: 715px; */
   height: 100px;
   flex-grow: 0;
   /* margin: 0px 50px 0px 40px; */
-  padding: 1px 20px 0 9px;
+  /* padding: 1px 20px 0px 20px; */
   font-family: Georgia;
-  font-size: 45px;
+  font-size: 39px;
   font-weight: bold;
-  line-height: 1.57;
+  line-height: 3;
   letter-spacing: normal;
-  text-align: left;
+  text-align: center;
   color: #ffffff;
 }
 
 .Holy-Connect-is-always-being-with-you {
-  width: 500;
-  height: 30px;
-  padding-left: 100px;
+  /* width: 500; */
+  height: 10px;
+  /* padding-left: 100px; */
+  margin-top: 5px;
   font-family: Lato;
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 600;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.57;
+  line-height: 0;
   letter-spacing: normal;
-  text-align: left;
+  text-align: center;
   color: #ffffff;
 }
 
@@ -42,9 +43,20 @@
   padding-top: 100px;
 }
 
-.RightSpace { 
-  text-align: right; 
+form {
+  margin-top: 40px;
+  text-align: left;
+  padding-left: 550px;
 }
+
+form button {
+  margin-left: 150px;
+}
+
+.selectbox {
+  height: 30px;
+}
+
 .SendMoney
   {
   width: 15px;
@@ -59,6 +71,15 @@
   height: 18px;
   margin: 10px 0px 11px 86px;
   background-color: #ffffff;
+}
+
+#price {
+  text-align: right;
+}
+
+.form {
+  font-size: 17px;
+  font-weight: bold;
 }
 
 .named {
