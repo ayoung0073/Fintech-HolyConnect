@@ -1,32 +1,42 @@
-.bg {
-    width: 1920px;
-    height: 40px;
+.nav {
+    height: 65px;
     flex-grow: 0;
-    padding: 13px 1367px 13px 20px;
+    /* padding: 13px 1367px 13px 20px; */
     background-color: #ffffff;
 }
 
 .title {
-    width: 533px;
-    height: 45.5px;
-    margin: 600px 0 7.5px;
+    /* width: 533px; */
+    /* height: 45.5px; */
+    margin-left: 15px;
+    margin-top: 14px;
     font-family: RedHatText;
-    font-size: 36px;
+    font-size: 33px;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
     text-align: center;
-    color: #01996d;
+    color: #279274;
 }
 
+/* .bg {
+    height: 1000px;
+} */
+
+.bg {
+    background-image: url('../images/MainPicture.png');
+    height: 615px;
+}
 .mainBody {
-    width: 1920px;
+    padding-left: 30px;
+    /* width: 1920px; */
+    height: 615px;
+
     /* height: 895px; */
     flex-grow: 0;
     /* margin: 85.6px 0 0; */
-    background-image: linear-gradient(to top, #ffffff, rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
 }
 
 .mainContent{
@@ -43,17 +53,16 @@
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    color: #01996d;
+    color: #279274;
   }
 
 .subContent {
-    width: 420px;
     height: 123px;
     flex-grow: 0;
-    margin: 30px 0 0 14px;
+    margin: 130px 0 0 14px;
     font-family: Lato;
     font-size: 20px;
-    font-weight: normal;
+    font-weight: bold;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.57;
@@ -68,6 +77,8 @@
     height: 65px;
     flex-grow: 0;
     display: flex;
+    font-family: Lato;
+    font-weight: bold;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -75,8 +86,8 @@
     margin: 20px 5px 0 14px;
     padding: 20px 50px;
     border-radius: 4px;
-    border: solid 1px #01996d;
-    background-color: #5633e2;
+    border: solid 1px #ffffff;
+    background-color: #279274;
     color: #ffffff;
     float:left;
 }
@@ -85,6 +96,8 @@
     width: 156px;
     height: 65px;
     flex-grow: 0;
+    font-family: Lato;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -94,7 +107,7 @@
     padding: 20px 50px;
     border-radius: 4px;
     color: #ffffff;
-    border: solid 1px #856de7;
-    background-color: #01996d;
+    border: solid 1px #ffffff;
+    background-color: #33688b;
     float:left;
 }
