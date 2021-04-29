@@ -2,6 +2,8 @@ const express = require('express') // Express module
 const app = express() 
 const port = 5000 
 const request = require('request');
+const cors = require('cors');
+app.use(cors()); // CORS 미들웨어 추가
 
 var jwt = require('jsonwebtoken');
 var mysql = require('mysql');
@@ -9,9 +11,6 @@ var auth = require('./lib/auth');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
-
-
-const bodyParser = require('body-parser')
 
 // Database Connect
 var connection = mysql.createConnection({
@@ -22,15 +21,7 @@ var connection = mysql.createConnection({
 });
 connection.connect();
 
-app.get('/api/test', (req, res) => {
-    res.json({message:'Get JSON Example'});
-})
-
-app.get("/api/test/data", (req, res) => {
-    const q=req.query;
-    res.json({message:'Get JSON Example', name:q.name})
-})
-
+// 회원가입
 app.post('/api/signup', function(req, res){
     var name = req.body.name;
     var email = req.body.email;
@@ -41,8 +32,8 @@ app.post('/api/signup', function(req, res){
 
     var sql = "INSERT INTO user (name, email, password, accesstoken, refreshtoken, userseqnum) VALUES (?,?,?,?,?,?)"
     connection.query(
-        sql, // excute sql
-        [name, email, password, accessToken, refreshToken, userSeqNum], // ? <- value
+        sql, 
+        [name, email, password, accessToken, refreshToken, userSeqNum], 
          function(err, result){
             if(err){
                 console.error(err);
@@ -63,7 +54,8 @@ app.post('/api/signup', function(req, res){
     })
 })
 
-app.post('/api/signin', (req, res) => { // 로그인
+// 로그인
+app.post('/api/signin', (req, res) => { 
     var email = req.body.email;  
     var plainPassword = req.body.password;
     const sql = "SELECT * FROM user WHERE email = ?";
@@ -145,7 +137,7 @@ app.get('/api/info', auth, (req, res) => {
 })
 
 // 출금이체 API
-app.post('/withdraw', auth, function (req, res) {
+app.post('/api/withdraw', auth, function (req, res) {
     var userId = req.decoded.data.userId;
     var fin_use_num = req.body.fin_use_num;
 
