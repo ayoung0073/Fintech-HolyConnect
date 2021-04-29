@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 
 function ThirdPage() {
     useEffect(() => {
-        axios.get('') /* 사이트URL/Third 로 받아오면 됨*/
+        axios.get('') /* ''안에는 사이트URL받아오면 됨*/
             .then(response => {
                 console.log(response)
             });
