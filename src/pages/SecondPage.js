@@ -3,11 +3,15 @@ import '../css/SecondPage.css'
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'ajax';
+import Modal from '../components/Modal';
+// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 function SecondPage(props) {
     const [User, setUser] = useState([]);
     const [Anonymous, setAnonymous] = useState('false');
     const [Price, setPrice] = useState('');
+    const [OpenModal, setOpenModal] = useState(false);
+    const [Cancel, setCancel] = useState(false);
 
     useEffect(() => {
         axios.get('http://127.0.0.1:5000/api/info', {
@@ -22,9 +26,9 @@ function SecondPage(props) {
     }, []);
     
     const onSubmitHandler = (event) => {
+        setOpenModal(false);
         event.preventDefault();
         let fin = document.getElementById('fin');
-        // console.log(fin.options[fin.selectedIndex].value);
         let body = {
             price: Price.replaceAll(',',''),
             anonymous: Anonymous,
@@ -49,10 +53,18 @@ function SecondPage(props) {
         })
     }
 
-    // const onPriceHandler = (event) => {
-    //     setPrice(event.currentTarget.value)
-    // }
-
+    const onModalHandler = (event) => {
+        event.preventDefault();
+        setOpenModal(true);
+        console.log({OpenModal});
+    }
+    
+    const onCancelHandler = (event) => {
+        console.log('cancel : ', Cancel);
+        setOpenModal(false);
+        props.history.push('/second');
+        console.log({OpenModal});
+    }
 
     const changeRadio = (e) => {
         setAnonymous(e.target.value);
@@ -68,27 +80,25 @@ function SecondPage(props) {
         var result = AddComma(value);
         setPrice(result)
       
-        //   _$self.val(result);
-    
-      function AddComma(dataValue) {
-        console.log(dataValue);
-        dataValue = dataValue.replaceAll(',','');
-        isNumber(dataValue);
-        var separateValue = Number(dataValue).toLocaleString('en');
-        console.log(separateValue);
-        if (separateValue == 'NaN') {
-          return '';
+        function AddComma(dataValue) {
+            console.log(dataValue);
+            dataValue = dataValue.replaceAll(',','');
+            isNumber(dataValue);
+            var separateValue = Number(dataValue).toLocaleString('en');
+            console.log(separateValue);
+            if (separateValue == 'NaN') {
+            return '';
+            }
+            return separateValue;
         }
-        return separateValue;
-      }
       
-      function isNumber(checkValue) {
-          checkValue = '' + checkValue;
-          if (isNaN(checkValue) || checkValue == "") {
-            alert('숫자만 입력해 주세요.');
-            return;
-          }
-      }
+        function isNumber(checkValue) {
+            checkValue = '' + checkValue;
+            if (isNaN(checkValue) || checkValue == "") {
+                alert('숫자만 입력해 주세요.');
+                return;
+            }
+        }
     }
       
     return(
@@ -103,7 +113,7 @@ function SecondPage(props) {
             </div>
 
             <div className="RightSpace">
-            <form onSubmit={onSubmitHandler}>
+            <form>
                 
                 <div>
                 <div class="form-check-inline">
@@ -156,7 +166,8 @@ function SecondPage(props) {
 
                 </div>
                 <br/><br/>
-                <button className="form-button" class="btn btn-light">헌금하기</button>
+                <button className="form-button" class="btn btn-light" onClick={onModalHandler}>헌금하기</button>
+                <Modal isOpen={OpenModal} close={onSubmitHandler} cancel={onCancelHandler} price={Price}/>
                 </form>
             </div>
             <script>

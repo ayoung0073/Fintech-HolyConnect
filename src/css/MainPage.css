@@ -27,16 +27,12 @@
 
 .bg {
     background-image: url('../images/MainPicture.png');
-    height: 615px;
+    height: 700px;
 }
 .mainBody {
     padding-left: 30px;
-    /* width: 1920px; */
     height: 615px;
-
-    /* height: 895px; */
     flex-grow: 0;
-    /* margin: 85.6px 0 0; */
 }
 
 .mainContent{
