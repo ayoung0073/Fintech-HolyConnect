@@ -38,7 +38,7 @@ app.post('/api/signup', function(req, res){
             if(err){
                 console.error(err);
                 let data = {
-                    responseCode: 400,
+                    success: false,
                     message: "회원가입 실패"
                 }
                 res.json(data);
@@ -46,7 +46,7 @@ app.post('/api/signup', function(req, res){
             }
             else {
                 let data = {
-                    responseCode: 201,
+                    success: true,
                     message: "회원가입 성공"
                 }
                 res.json(data);
@@ -68,7 +68,7 @@ app.post('/api/signin', (req, res) => {
         else {
             // 1. User 있는지 체크
             if(result.length == 0) {
-                res.json(0);
+                res.json({success:false});
             }
             // 2. Password 비교
             else {
@@ -90,7 +90,7 @@ app.post('/api/signin', (req, res) => {
                     });
                 }
                 else {
-                    res.json(2)
+                    res.json({success:false})
                 }
             }
         }
@@ -127,9 +127,11 @@ app.get('/api/info', auth, (req, res) => {
                     throw err;
                 }
                 else {
-                    var accessRequestResult = JSON.parse(body);
-                    console.log(accessRequestResult);
-                    res.json(accessRequestResult)
+                    var response = {
+                        success: true,
+                        data: JSON.parse(body)
+                    }
+                    res.json(response)
                 }
             })
         }
@@ -138,9 +140,13 @@ app.get('/api/info', auth, (req, res) => {
 
 // 출금이체 API
 app.post('/api/withdraw', auth, function (req, res) {
+    console.log(req.body);
     var userId = req.decoded.data.userId;
     var fin_use_num = req.body.fin_use_num;
-
+    var price = req.body.price;
+    var anonymous;
+    if (req.body.anonymous) anonymous = 1; // true
+    else anonymous = 0; // false
     var countnum = Math.floor(Math.random() * 1000000000) + 1;
     var transId = "M202112119U" + countnum; // 이용기관번호
     var sql = "SELECT * FROM user WHERE id = ?"
@@ -165,17 +171,19 @@ app.post('/api/withdraw', auth, function (req, res) {
                     "dps_print_content": "헌금",
                     "fintech_use_num": fin_use_num,
                     "wd_print_content": "헌금",
-                    "tran_amt": "100000",
-                    "tran_dtime": "20200424131111",
-                    "req_client_name": "문아영",
-                    "req_client_fintech_use_num" : "199159919057870971744807",
-                    "req_client_num": "HONGGILDONG1234",
+                    "tran_amt": price,
+                    "tran_dtime": "20200429131111",
+                    "req_client_name": result[0].name,
+                    "req_client_fintech_use_num" : "120211211988932289661912",
+                    "req_client_num": "HOLYCONNECT",
                     "transfer_purpose": "TR",
                     "recv_client_name": "신성교회",
                     "recv_client_bank_code": "097",
                     "recv_client_account_num": "100000000003"
                 }
             }
+
+        
             request(option, function(err, response, body){
                 if(err){
                     console.error(err);
@@ -184,7 +192,26 @@ app.post('/api/withdraw', auth, function (req, res) {
                 else {
                     console.log(body);
                     if(body.rsp_code == 'A0000'){
-                        res.json(1)
+                        var response = {
+                            success: true,
+                            data: body
+                        } 
+                        var sql = "INSERT INTO withdraw (user_id, price, banktrans_id, trans_date, anonymous, remain) VALUES (?,?,?,?,?,?)";
+                        connection.query(
+                            sql, 
+                            [userId, price, body.bank_tran_id, body.bank_tran_date, anonymous, body.wd_limit_remain_amt], 
+                             function(err, result){
+                                if(err){
+                                    console.error(err);
+                                    let data = {
+                                        success: false,
+                                        message: "회원가입 실패"
+                                    }
+                                    res.json(data);
+                                    throw err;
+                                }
+                            });
+                        res.json(response);
                     }
                 }
             })
@@ -230,15 +257,16 @@ app.post('/api/history', auth, (req, res) => {
                 }
             }
             request(option, function(err, response, body){
-                console.log(body);
                 if(err){
                     console.error(err);
                     throw err;
                 }
                 else {
-                    var accessRequestResult = JSON.parse(body);
-                    console.log(accessRequestResult);
-                    res.json(accessRequestResult)
+                    var response = {
+                        success: true,
+                        data: JSON.parse(body)
+                    }
+                    res.json(response)
                 }
             })
         }
