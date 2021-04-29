@@ -14,7 +14,7 @@ function ThirdPage() {
     }, []);  
     return (
         <div>
-          <img src={TransferImage}alt="Trans" class="Trans"/>
+          <img src={TransferImage}alt="TransferImage" class="TransferImage"/>
             <div className="screen">
                 <img src = {checkImage}
                   width = '100px'
