@@ -2,6 +2,7 @@ import './App.css';
 import MainPage from './pages/MainPage'
 import SecondPage from './pages/SecondPage'
 import ThirdPage from './pages/ThirdPage'
+import PayList from './pages/PayList'
 // import React, { useState } from 'react';
 
 import {
@@ -10,6 +11,7 @@ import {
   Route,
   // Link
 } from "react-router-dom";
+
 // import SecondPage from '/pages/SecondPage'
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
         <Route exact path="/" component={MainPage}/>c
         <Route exact path="/second" component={SecondPage}/>
         <Route exact path="/third" component={ThirdPage}/>
+        <Route exact path="/payList" component={PayList}/>
       </Switch>
   </Router>
   );
