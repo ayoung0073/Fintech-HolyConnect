@@ -22,7 +22,7 @@ function MainPage(props) {
                     Holy Connect, 가치를 부여하다
                 </div>
                 <Link to="/second">
-                    <button className="btn-first">현금</button>
+                    <button className="btn-first">헌금</button>
                 </Link>
                 <button className="btn-second">
                     스케줄
