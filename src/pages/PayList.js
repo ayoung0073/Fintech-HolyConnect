@@ -26,7 +26,11 @@ function PayList() {
 
     return(
 
-        
+        <div>
+        <br/>
+        <br/>
+        <h1>헌금 내역</h1>
+        <br/>
         <table class="full-history-table" border="2px" align="center">
             <tr class="full-title">
                 <th>헌금 날짜</th>
@@ -43,7 +47,7 @@ function PayList() {
                 })
             }
         </table>
-
+        </div>
         
 
     )

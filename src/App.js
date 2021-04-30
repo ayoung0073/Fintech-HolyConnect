@@ -11,7 +11,7 @@ import {
   Route,
   // Link
 } from "react-router-dom";
-import payList from './pages/PayList';
+
 // import SecondPage from '/pages/SecondPage'
 
 function App() {

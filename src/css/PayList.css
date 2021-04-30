@@ -1,12 +1,25 @@
+div {
+    background-color: #245852;
+    
+}
+
+h1 {
+    text-align: center;
+    color: lightgray;
+}
+
 .full-history-table {
     margin-top:20px;
     text-align: center;
     width: 400px;
     border-radius: 10px;
-
+    border-color: lightgray;
+    background-color: lightgray;
 
 }
 
+
 .full-title {
-    background-color: #33688b;
+    background-color: #2458528e;
+    color: lightgray;
 }
