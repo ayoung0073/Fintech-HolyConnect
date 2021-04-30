@@ -47,16 +47,6 @@ function ThirdPage() {
                 <br/>
                 <div>
                 <h4 className="">최근 헌금 내역</h4>
-
-                {/* function date() {
-                    var dateArray = [];
-                    for(i = 0; i < 5; i++) {
-                        dateArray[i] += {list.length != 0 &&  
-                            list.map((element) => {
-                            return <p value={element.tran_date}>{element.tran_date}</p>
-                            })}
-                     }           
-                } */}
                 
                 
                 <table class="history-table" border="1px" align="center">
@@ -78,7 +68,7 @@ function ThirdPage() {
                     <button className="btn-history">헌금내역조회</button>
                 </Link>
                 &nbsp;
-                <Link to="/main">
+                <Link to="/">
                     <button className="btn-check">
                         확인
                     </button>
