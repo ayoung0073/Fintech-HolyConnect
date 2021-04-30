@@ -2,6 +2,7 @@ import './App.css';
 import MainPage from './pages/MainPage'
 import SecondPage from './pages/SecondPage'
 import ThirdPage from './pages/ThirdPage'
+import QRPage from './pages/QRPage'
 import PayList from './pages/PayList'
 // import React, { useState } from 'react';
 

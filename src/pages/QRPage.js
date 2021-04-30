@@ -1,47 +1,36 @@
-import React from 'react'
-// import '../css/MainPage.css'
+import '../css/MainPage.css'
 import {Link} from 'react-router-dom'
 // import '../js/global.script.js'
 import '../js/qrcode.js'
+import React, {useEffect, useState} from 'react'
 // import '../js/qr.min.js'
 // import '../js/jquery-3.2.1.min.js'
 // import MainImage from '../images/MainPicture.png';
+// import '@grapecity/wijmo.styles/wijmo.css';
+import { BarcodeQrCode } from '@grapecity/wijmo.react.barcode.common';
 
 function QRPage(props) {
-    function getQueryStringObject() {
-        var a = window.location.search.substr(1).split('&');
-        if (a == "") return {};
-        var b = {};
-        for (var i = 0; i < a.length; ++i) {
-            var p = a[i].split('=', 2);
-            if (p.length == 1)
-                b[p[0]] = "";
-            else
-                b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-        }
-        return b;
-    }
-    var qs = getQueryStringObject();
-    // var jwtToken = sessionStorage.getItem('jwtToken');
-    // new QRCode(document.getElementById("qrcode"), qs.fin_use_num);
+
+    const [Fintech, setFintech] = useState('120211211988932289661912');
+
 return(
 <div>
+<nav>
+<Link to="/">   
+        <span className="third-title">Holy Connect</span> 
+</Link>
+</nav>
 <main>
 <div class="container">
-    <div id="qrcode"></div>
+    
+    <div className="qr-content">
+        <BarcodeQrCode className="qrcode" value={Fintech}/>
+    </div>
 </div>
 
-<div class="form-divider"></div>
-
 <footer>
-    <div class="container">
-        <ul>
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-google"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-        </ul>
-        <p>Copyright © All Right Reserved</p>
+    <div className="qr-content">
+        <span className="qr-foot">Copyright © All Right Reserved</span>
     </div>
 </footer>
 
