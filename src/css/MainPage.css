@@ -1,6 +1,7 @@
-.nav {
+nav {
     height: 65px;
     flex-grow: 0;
+    padding: 13px;
     /* padding: 13px 1367px 13px 20px; */
     background-color: #ffffff;
 }
@@ -8,8 +9,6 @@
 .title {
     /* width: 533px; */
     /* height: 45.5px; */
-    margin-left: 15px;
-    margin-top: 14px;
     font-family: RedHatText;
     font-size: 33px;
     font-weight: bold;
@@ -21,9 +20,17 @@
     color: #279274;
 }
 
-/* .bg {
-    height: 1000px;
-} */
+.login-btn {
+    float: right;
+    background-color: #33688b;
+    color: #ffffff;
+    border-radius: 4px;
+    border-color: #33688b;
+    height: 35px;
+    width: 70px;
+    font-weight: 600;
+}
+
 
 .bg {
     background-image: url('../images/MainPicture.png');

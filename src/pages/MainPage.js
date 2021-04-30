@@ -7,12 +7,10 @@ import MainImage from '../images/MainPicture.png';
 function MainPage(props) {
     return (
       <div>
-        <style>
-
-        </style>
-        <div className="nav">
+        <nav>
             <span className="title">Holy Connect</span> 
-        </div>
+            <button className="login-btn">로그인</button>
+        </nav>
         {/* <img src={MainImage} height="1000px" alt="MainImage" class="MainImage"> */}
         <div className="bg">
             <div className="mainBody">
