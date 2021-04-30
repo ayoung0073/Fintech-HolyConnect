@@ -62,7 +62,7 @@ function ThirdPage() {
                 }
                 </table>
                 <br/>
-                <Link to="/third">
+                <Link to="/payList">
                     <button className="btn-history">헌금내역조회</button>
                 </Link>
                 &nbsp;
