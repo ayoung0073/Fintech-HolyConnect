@@ -7,9 +7,12 @@ import MainImage from '../images/MainPicture.png';
 function MainPage(props) {
     return (
       <div>
-        <nav>
-            <span className="title">Holy Connect</span> 
+        <nav className="main-nav">
+            <span className="main-title">Holy Connect</span> 
             <button className="login-btn">로그인</button>
+            <Link to="qrcode?fin_use_num=120211211988932289661912">
+                <button className="qr-btn">QR코드 생성</button>
+            </Link>
         </nav>
         {/* <img src={MainImage} height="1000px" alt="MainImage" class="MainImage"> */}
         <div className="bg">

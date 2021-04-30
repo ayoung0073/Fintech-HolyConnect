@@ -32,6 +32,38 @@
   width: 100%;
 }
 
+nav {
+  height: 65px;
+  flex-grow: 0;
+  padding: 13px;
+  /* padding: 13px 1367px 13px 20px; */
+  background-color: #24856abc;
+}
+
+.success-div {
+  text-align: center;
+  width: 500px;
+  padding: 10px;
+  margin-left: 450px;
+  border:1.8px solid #245852;
+  border-radius: 8px;
+}
+
+.success-title {
+  color: #245852;
+}
+.third-title {
+  font-family: RedHatText;
+  font-size: 33px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
 .withdrawerAccontText{
   width: 92px;
   height: 33px;
@@ -101,7 +133,10 @@
     float:left;
 }
 
-
+.recent-title {
+  font-weight: 700;
+  text-decoration: underline;
+}
 
 .withdrawerAccount{
   width: 247px;

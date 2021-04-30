@@ -11,7 +11,7 @@ const Modal = ({ isOpen, close, cancel, price }) => {
       <React.Fragment>
         <div className="Modal-overlay" onClick={cancel} />
         <div className="Modal">
-          <p className="title">
+          <p className="Modal-title">
                 <b>{price}원</b>
           </p>
           <div className="content">

@@ -28,17 +28,15 @@ function ThirdPage() {
             }, []);
 
     return (
-        <div style={{display:'flex'}}>
+        <div>
+            <nav>
+                <span className="third-title">Holy Connect</span> 
+            </nav>
             {/* <img src={TransferImage}alt="TransferImage" class="TransferImage"/> */}
             <div className="screen">
                 <div className="second-body">
-                <div>
-                {/* <input className="userName" type="userName"/> */}
-                {/* <div className="userNameText">님에게</div> */}
-                </div>
-                <div>
-                    <div className="amount"></div>
-                    <h3>✔️ 이체가 성공적으로 완료되었습니다!</h3>
+                <div className="success-div">
+                    <h3 className="success-title">✔️ 이체가 성공적으로 완료되었습니다!</h3>
                 </div>
                 {/* <div>
                     <label className ="withdrawerAccontText"> 받는 계좌</label>
@@ -46,13 +44,13 @@ function ThirdPage() {
                 </div> */}
                 <br/>
                 <div>
-                <h4 className="">최근 헌금 내역</h4>
+                <h4 className="recent-title">최근 헌금 내역</h4>
                 
                 
                 <table class="history-table" border="1px" align="center">
                     <tr >
                         <th class="table-title">헌금 날짜</th>
-                        <th class="table-title">가격</th>
+                        <th class="table-title">헌금액</th>
                     </tr>
                     {list.length != 0 && 
                     list.slice(0, 5).map((element) => { // 리스트 자르기
