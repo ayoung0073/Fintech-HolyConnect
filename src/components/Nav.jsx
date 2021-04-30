@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-
 const Nav = () => {
     return (
         <div>
@@ -14,8 +13,12 @@ const Nav = () => {
             <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script> */}
             
         <nav className="main-nav">
-            <span className="main-title">Holy Connect</span> 
-            <button className="login-btn">로그인</button>
+            <Link to="/" className="no-underline">   
+                <span className="main-title">Holy Connect</span> 
+            </Link>
+            <Link to="/login">
+                <button className="btn-login">로그인</button>
+            </Link>
             <Link to="qrcode?fin_use_num=120211211988932289661912">
                 <button className="qr-btn">QR코드 생성</button>
             </Link>

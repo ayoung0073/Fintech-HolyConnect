@@ -46,7 +46,12 @@
     color: #279274;
 }
 
-.login-btn {
+
+.no-underline:hover {
+    text-decoration: none;
+}
+
+.btn-login {
     float: right;
     background-color: #33688b;
     color: #ffffff;
@@ -54,6 +59,22 @@
     border-color: #33688b;
     height: 35px;
     width: 70px;
+    font-weight: 600;
+}
+
+.login-title {
+    font-weight: 700;
+    text-align: center;
+}
+
+.btn-login2 {
+    background-color: #279274;
+    color: #ffffff;
+    border-radius: 4px;
+    border-color: #279274;
+    margin-left: 500px;
+    height: 35px;
+    width: 80px;
     font-weight: 600;
 }
 
@@ -68,7 +89,6 @@
     width: 100px;
     font-weight: 600;
 }
-
 
 
 .bg {

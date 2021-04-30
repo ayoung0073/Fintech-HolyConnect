@@ -113,7 +113,7 @@ function SecondPage(props) {
             </div>
 
             <div className="RightSpace">
-            <form>
+            <form className="form-second">
                 
                 <div>
                 <div class="form-check-inline">

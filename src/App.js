@@ -25,6 +25,7 @@ function App() {
         <Route exact path="/third" component={ThirdPage}/>
         <Route exact path="/qrcode" component={QRPage}/>
         <Route exact path="/payList" component={PayList}/>
+        <Route exact path="/login" component={LoginPage}/>
       </Switch>
   </Router>
   );
