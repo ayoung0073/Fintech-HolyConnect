@@ -6,6 +6,19 @@
     background-color: #ffffff;
 }
 
+.qrcode {
+    width: 300px;
+    height: 300px;
+}
+.qr-foot{
+    margin-left: 500px;
+    
+}
+
+.qr-content {
+    margin-left: 300px;
+}
+
 .main-title {
     /* width: 533px; */
     /* height: 45.5px; */
@@ -47,7 +60,7 @@
 
 .bg {
     background-image: url('../images/MainPicture.png');
-    height: 700px;
+    height: 750px;
 }
 .mainBody {
     padding-left: 30px;

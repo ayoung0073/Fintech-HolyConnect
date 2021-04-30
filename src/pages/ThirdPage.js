@@ -5,8 +5,6 @@ import '../css/ThirdPage.css'
 import {Link} from 'react-router-dom'
 
 
-
-
 function ThirdPage() {
 
     const [list, setList] = useState([]);
@@ -27,10 +25,32 @@ function ThirdPage() {
             )
             }, []);
 
+    function AddComma(dataValue) {
+        console.log(dataValue);
+        dataValue = dataValue.replaceAll(',','');
+        isNumber(dataValue);
+        var separateValue = Number(dataValue).toLocaleString('en');
+        console.log(separateValue);
+        if (separateValue == 'NaN') {
+        return '';
+        }
+        return separateValue;
+    }
+
+    function isNumber(checkValue) {
+        checkValue = '' + checkValue;
+        if (isNaN(checkValue) || checkValue == "") {
+            alert('숫자만 입력해 주세요.');
+            return;
+        }
+    }
+
     return (
         <div>
             <nav>
-                <span className="third-title">Holy Connect</span> 
+                <Link to="/">   
+                    <span className="third-title">Holy Connect</span> 
+                </Link>
             </nav>
             {/* <img src={TransferImage}alt="TransferImage" class="TransferImage"/> */}
             <div className="screen">
@@ -56,7 +76,7 @@ function ThirdPage() {
                     list.slice(0, 5).map((element) => { // 리스트 자르기
                         return <tr>
                                    <td>{element.tran_date}</td>
-                                   <td>{element.tran_amt}원</td>
+                                   <td>{AddComma(element.tran_amt)}원</td>
                                </tr>
                     })
                 }

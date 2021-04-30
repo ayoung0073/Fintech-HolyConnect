@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import '../css/PayList.css'
-
+import {Link} from 'react-router-dom'
 
 function PayList() {
 
@@ -24,9 +24,34 @@ function PayList() {
             )
             }, []);
 
+        function AddComma(dataValue) {
+            console.log(dataValue);
+            dataValue = dataValue.replaceAll(',','');
+            isNumber(dataValue);
+            var separateValue = Number(dataValue).toLocaleString('en');
+            console.log(separateValue);
+            if (separateValue == 'NaN') {
+            return '';
+            }
+            return separateValue;
+        }
+    
+        function isNumber(checkValue) {
+            checkValue = '' + checkValue;
+            if (isNaN(checkValue) || checkValue == "") {
+                alert('숫자만 입력해 주세요.');
+                return;
+            }
+        }
+
     return(
 
-        <div>
+        <div className="pay-div">
+            <nav className="pay-nav">
+                <Link to="/">
+                    <span className="pay-title">Holy Connect</span> 
+                </Link>
+            </nav>
         <br/>
         <br/>
         <h1>헌금 내역</h1>
@@ -41,12 +66,18 @@ function PayList() {
                 return (
                     <tr>
                     <td>{element.tran_date}</td>
-                    <td>{element.tran_amt}원</td>
+                    <td>{AddComma(element.tran_amt)}원</td>
                     </tr>
                     )
                 })
             }
         </table>
+        <br/>
+        <Link to="/">
+            <button className="pay-check-btn">확인</button>
+        </Link>
+        <br/>
+        <br/>
         </div>
         
 
