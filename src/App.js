@@ -2,13 +2,13 @@ import './App.css';
 import MainPage from './pages/MainPage'
 import SecondPage from './pages/SecondPage'
 import ThirdPage from './pages/ThirdPage'
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  // Link
 } from "react-router-dom";
 // import SecondPage from '/pages/SecondPage'
 
