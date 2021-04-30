@@ -3,7 +3,7 @@ import TransferImage from '../images/TransferImage.PNG';
 import axios from 'axios';
 import '../css/ThirdPage.css'
 import {Link} from 'react-router-dom'
-
+import Nav from '../components/Nav_bg'
 
 function ThirdPage() {
 
@@ -47,11 +47,7 @@ function ThirdPage() {
 
     return (
         <div>
-            <nav>
-                <Link to="/">   
-                    <span className="third-title">Holy Connect</span> 
-                </Link>
-            </nav>
+            <Nav />
             {/* <img src={TransferImage}alt="TransferImage" class="TransferImage"/> */}
             <div className="screen">
                 <div className="second-body">

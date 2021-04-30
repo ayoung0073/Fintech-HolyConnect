@@ -1,20 +1,14 @@
 import React from 'react'
 import '../css/MainPage.css'
 import {Link} from 'react-router-dom'
+import Nav from '../components/Nav'
 import MainImage from '../images/MainPicture.png';
 
 
 function MainPage(props) {
     return (
       <div>
-        <nav className="main-nav">
-            <span className="main-title">Holy Connect</span> 
-            <button className="login-btn">로그인</button>
-            <Link to="qrcode?fin_use_num=120211211988932289661912">
-                <button className="qr-btn">QR코드 생성</button>
-            </Link>
-        </nav>
-        {/* <img src={MainImage} height="1000px" alt="MainImage" class="MainImage"> */}
+        <Nav />
         <div className="bg">
             <div className="mainBody">
                 <div className="mainContent">
@@ -32,7 +26,6 @@ function MainPage(props) {
                 </button>
             </div>
         </div>
-        {/* </img> */}
       </div>
     );
 }

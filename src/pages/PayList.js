@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 import '../css/PayList.css'
 import {Link} from 'react-router-dom'
+import Nav from '../components/Nav'
 
 function PayList() {
 
@@ -47,13 +48,8 @@ function PayList() {
     return(
 
         <div className="pay-div">
-            <nav className="pay-nav">
-                <Link to="/">
-                    <span className="pay-title">Holy Connect</span> 
-                </Link>
-            </nav>
-        <br/>
-        <br/>
+        <Nav />
+        <br/><br/>
         <h1>헌금 내역</h1>
         <br/>
         <table class="full-history-table" border="2px" align="center">
