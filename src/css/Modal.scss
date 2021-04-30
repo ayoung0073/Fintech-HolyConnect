@@ -12,7 +12,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 320px;
-      border-radius: 5px;
+      // border-radius: 5px;
       background-color: white;
       box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
       & > * {
@@ -50,11 +50,11 @@
           padding: 12px 0;
           background-color: #279274;
           border: #ffffff;
-          border-radius: 5px;
+          // border-radius: 5px;
           font-size: 13pt;
           margin-left: 0px;
+          margin-top:0.1px;
           color: white;
-          margin-bottom: 0.5px;
           cursor: pointer;
           &:hover{
             background-color: #33688b;

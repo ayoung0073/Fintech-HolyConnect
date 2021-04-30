@@ -15,7 +15,7 @@ function SecondPage(props) {
 
     useEffect(() => {
         axios.get('http://127.0.0.1:5000/api/info', {
-            headers: {"token" : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY4Nzc4NiwiZXhwIjoxNjE5NzE2NTg2fQ.OerDKIgvYtxcHt8GaQzd0MYKGANzX0Wqpu3leiTxn0Y'}
+            headers: {"token" : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTc0NDY4MiwiZXhwIjoxNjE5NzczNDgyfQ.7W9qufTuoYduydcJ0yCcxlJBzXW9FVKJgO5Tu70AkWY'}
         }) 
             .then(response => {
                 if (response.data.success){
@@ -39,7 +39,7 @@ function SecondPage(props) {
             let option = {
                 url : 'http://127.0.0.1:5000/api/withdraw',
                 headers : {
-                    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTY4Nzc4NiwiZXhwIjoxNjE5NzE2NTg2fQ.OerDKIgvYtxcHt8GaQzd0MYKGANzX0Wqpu3leiTxn0Y"
+                    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJJZCI6Mn0sImlhdCI6MTYxOTc0NDY4MiwiZXhwIjoxNjE5NzczNDgyfQ.7W9qufTuoYduydcJ0yCcxlJBzXW9FVKJgO5Tu70AkWY"
                 },
                 method : 'POST',
                 data: body
