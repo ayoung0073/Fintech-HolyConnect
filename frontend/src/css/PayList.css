@@ -1,0 +1,59 @@
+.pay-div {
+    background-color: #245852;
+    
+}
+.pay-nav {
+    height: 65px;
+    flex-grow: 0;
+    padding: 13px;
+    /* padding: 13px 1367px 13px 20px; */
+    background-color: #ffffff;
+}
+
+.pay-title {
+    /* width: 533px; */
+    /* height: 45.5px; */
+    font-family: RedHatText;
+    font-size: 33px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #279274;
+}
+
+h1 {
+    text-align: center;
+    color: lightgray;
+}
+
+.full-history-table {
+    margin-top:20px;
+    text-align: center;
+    width: 400px;
+    border-radius: 10px;
+    border-color: lightgray;
+    background-color: lightgray;
+
+}
+
+
+.full-title {
+    background-color: #2458528e;
+    color: lightgray;
+}
+
+.pay-check-btn {
+    background-color: lightgray;
+    color: #245852;
+    align-items: center;
+    border-radius: 4px;
+    border-color: lightgray;
+    height: 35px;
+    width: 70px;
+    align-content: center;
+    margin-left: 670px;
+    font-weight: 600;  
+}

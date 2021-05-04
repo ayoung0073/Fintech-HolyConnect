@@ -1,0 +1,128 @@
+.BG {
+  width: 100%;
+  height:  790px;
+  background-color: #245852;
+}
+
+
+
+.Value- {
+  /* width: 715px; */
+  height: 100px;
+  flex-grow: 0;
+  /* margin: 0px 50px 0px 40px; */
+  /* padding: 1px 20px 0px 20px; */
+  font-family: Georgia;
+  font-size: 39px;
+  font-weight: bold;
+  line-height: 3;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.Holy-Connect-is-always-being-with-you {
+  /* width: 500; */
+  height: 10px;
+  /* padding-left: 100px; */
+  margin-top: 5px;
+  font-family: Lato;
+  font-size: 24px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.LeftSpace {
+  /* position: absolute;
+  left: 0; */
+  padding-top: 100px;
+}
+
+.form-second {
+  margin-top: 40px;
+  text-align: left;
+  font-family: Lato;
+  padding-left: 550px;
+}
+
+form button {
+  margin-left: 150px;
+}
+
+.selectbox {
+  height: 30px;
+}
+
+.SendMoney
+  {
+  width: 15px;
+  height: 5px;
+  /* margin-left: 800px; */
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.Vector {
+  width: 18px;
+  height: 18px;
+  margin: 10px 0px 11px 86px;
+  background-color: #ffffff;
+}
+
+#price {
+  text-align: right;
+}
+
+.form {
+  font-size: 17px;
+  font-weight: bold;
+  font-family: Lato;
+}
+
+.named {
+  width: 60px;
+  height: 18px;
+  /* padding: 11px 30px 18px 800px; */
+  color: #ffffff;
+}
+.nameBt1, .nameBt2 {
+  width: 30px;
+  height: 20px;
+}
+
+label {
+  color: #ffffff;
+}
+
+.Rectangle-2 {
+  width: 150px;
+  height: 20px;
+  /* margin: 200px 0px 0px 70px; */
+  border: solid 2px #000000;
+  background-color: #ffffff;
+}
+
+.Account {
+  width: 60px;
+  height: 18px;
+  font-size: 15px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.AccountNumber 
+  {
+    width: 150;
+    height: 20px;
+    font-family: Roboto;
+    font-size: 15px;
+  }
+
+/* .submit { */
+  /* margin-left: 1200px; */
+/* } */
