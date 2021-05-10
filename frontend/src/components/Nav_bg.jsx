@@ -14,7 +14,7 @@ const Nav = () => {
             <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script> */}
             
         <nav>
-            <Link to="/">   
+            <Link to="/" className="no-underline">   
                 <span className="third-title">Holy Connect</span> 
             </Link>
         </nav>  

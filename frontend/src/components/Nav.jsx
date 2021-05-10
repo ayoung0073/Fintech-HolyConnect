@@ -16,9 +16,13 @@ const Nav = () => {
             <Link to="/" className="no-underline">   
                 <span className="main-title">Holy Connect</span> 
             </Link>
+            {sessionStorage.getItem("token") === null
+            ?
             <Link to="/login">
                 <button className="btn-login">로그인</button>
             </Link>
+            : null
+            }   
             <Link to="qrcode?fin_use_num=120211211988932289661912">
                 <button className="qr-btn">QR코드 생성</button>
             </Link>
